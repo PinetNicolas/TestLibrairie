@@ -64,7 +64,7 @@
     <None Include="Sample.json" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Librairie.csproj">
+    <ProjectReference Include="..\Librairie\Librairie.csproj">
       <Project>{8935FDEA-DD00-48D8-9C72-A56CC141A43E}</Project>
       <Name>Librairie</Name>
     </ProjectReference>

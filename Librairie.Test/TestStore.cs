@@ -84,6 +84,36 @@ namespace Librairie.Test
         }
 
         [TestMethod]
+        public void CatalogJsonCalculateBasketMissingBook()
+        {
+            IStore store = new Store();
+            string test = System.Text.Encoding.UTF8.GetString(Properties.Resources.Sample__Replace);
+            store.Import(test);
+            NotEnoughInventoryException e = Assert.ThrowsException<NotEnoughInventoryException>(()=>store.Buy("Isaac Asimov - Foundation", "Isaac Asimov - Robot series", "J.K Rowling - Goblet Of fire", "J.K Rowling - Goblet Of fire"));
+            Assert.IsNotNull(e.Missing);
+            foreach (INameQuantity m in e.Missing)
+            {
+                if(m.Name == "J.K Rowling - Goblet Of fire")
+                    Assert.AreEqual(m.Quantity, 2);
+            }
+        }
+
+        [TestMethod]
+        public void CatalogJsonCalculateBasketNotEnoughQuantityBook()
+        {
+            IStore store = new Store();
+            string test = System.Text.Encoding.UTF8.GetString(Properties.Resources.Sample__Replace);
+            store.Import(test);
+            NotEnoughInventoryException e = Assert.ThrowsException<NotEnoughInventoryException>(() => store.Buy("Isaac Asimov - Foundation", "Isaac Asimov - Robot series", "Robin Hobb - Assassin Apprentice", "Robin Hobb - Assassin Apprentice"));
+            Assert.IsNotNull(e.Missing);
+            foreach (INameQuantity m in e.Missing)
+            {
+                if (m.Name == "Robin Hobb - Assassin Apprentice")
+                    Assert.AreEqual(m.Quantity, 1);
+            }
+        }
+
+        [TestMethod]
         public void CatalogJsonCalculateSimpleBasket()
         {
             IStore store = new Store();

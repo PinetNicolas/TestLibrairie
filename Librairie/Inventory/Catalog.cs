@@ -1,7 +1,6 @@
 ﻿using Librairie.Exception;
 using Librairie.Interface;
 using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
 
 namespace Librairie.Inventory
@@ -36,7 +35,14 @@ namespace Librairie.Inventory
             return Find(name)?.Quantity ?? 0;
         }
 
-
+        /// <summary>
+        /// Calculate a basket with catalog data
+        /// </summary>
+        /// <param name="basket">An enumarable of name/quantity object</param>
+        /// <returns>value of basket</returns>
+        /// <exception cref="NotEnoughInventoryException">
+        /// Occurs when some book are missing
+        /// </exception>
         internal double Calculate(IEnumerable<INameQuantity> basket)
         {
             double valCalculate = 0.0;
@@ -47,7 +53,7 @@ namespace Librairie.Inventory
                 CatalogItem available = Find(item.Name);
                 if (available == null || available.Quantity < item.Quantity)
                 {
-                    missing.Add(new NameQuantity(item.Name, item.Quantity - available.Quantity));
+                    missing.Add(new NameQuantity(item.Name, item.Quantity - (available?.Quantity??0)));
                     continue;
                 }
 
@@ -85,6 +91,13 @@ namespace Librairie.Inventory
             return valCalculate;
         }
 
+        /// <summary>
+        /// Check structure of the catalog
+        /// Verify that all categories exists
+        /// </summary>
+        /// <exception cref="CatalogMalFormException">
+        /// Occurs if one or more category missing
+        /// </exception>
         internal void CheckStructure()
         {
             foreach (CatalogItem item in CatalogItems)

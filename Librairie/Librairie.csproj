@@ -49,7 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Exception\NameQuantity.cs" />
+    <Compile Include="NameQuantity.cs" />
     <Compile Include="Exception\CatalogMalFormException.cs" />
     <Compile Include="Inventory\Catalog.cs" />
     <Compile Include="Inventory\CatalogItem.cs" />

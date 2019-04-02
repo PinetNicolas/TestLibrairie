@@ -1,16 +1,18 @@
 ﻿using Librairie.Exception;
 using Librairie.Interface;
 using Librairie.Inventory;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Librairie
 {
+    /// <summary>
+    /// Implementation of IStore
+    /// </summary>
     public class Store : IStore
     {
+        /// <summary>
+        /// Catalog in current state
+        /// </summary>
         private Catalog _currentCatalog;
 
         /// <summary>
@@ -30,6 +32,11 @@ namespace Librairie
             throw new NotEnoughInventoryException(basket);
         }
 
+        /// <summary>
+        /// Analyse basket in order to reorganise it in name quantity object
+        /// </summary>
+        /// <param name="basketByNames">the basket in string array format</param>
+        /// <returns>The basket in an enumarable of NameQuantity</returns>
         private IEnumerable<INameQuantity> BasketAnalyse(params string[] basketByNames)
         {
             Dictionary<string, NameQuantity> mapping = new Dictionary<string, NameQuantity>();
