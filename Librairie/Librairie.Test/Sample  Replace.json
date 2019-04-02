@@ -1,0 +1,42 @@
+{
+  "Category": [
+    {
+      "Name": "Science Fiction",
+      "Discount": 0.05
+    },
+    {
+      "Name": "Fantastique",
+      "Discount": 0.1
+    },
+    {
+      "Name": "Philosophy",
+      "Discount": 0.15
+    }
+  ],
+  "Catalog": [
+    {
+      "Name": "J.K Rowling - Harry Potter and the Philosopher's Stone",
+      "Category": "Fantastique",
+      "Price": 18,
+      "Quantity": 12
+    },
+    {
+      "Name": "Isaac Asimov - Foundation",
+      "Category": "Science Fiction",
+      "Price": 16,
+      "Quantity": 1
+    },
+    {
+      "Name": "Isaac Asimov - Robot series",
+      "Category": "Science Fiction",
+      "Price": 5,
+      "Quantity": 1
+    },
+    {
+      "Name": "Robin Hobb - Assassin Apprentice",
+      "Category": "Fantastique",
+      "Price": 12,
+      "Quantity": 8
+    }
+  ]
+}
