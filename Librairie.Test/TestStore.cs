@@ -1,9 +1,7 @@
-﻿using System;
-using System.IO;
-using System.Linq;
-using Librairie.Exception;
+﻿using Librairie.Exception;
 using Librairie.Interface;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 
 namespace Librairie.Test
 {
